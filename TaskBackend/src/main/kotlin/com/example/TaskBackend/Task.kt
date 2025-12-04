@@ -1,16 +1,15 @@
 package com.example.TaskBackend
 
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
+import jakarta.persistence.*
 
 @Entity
+@Table(name = "tasks")
 data class Task(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = null,
+    val id: Long = 0,
 
+    var title: String = "",
     var description: String = "",
-    var done: Boolean = false
+    var isCompleted: Boolean = false
 )
