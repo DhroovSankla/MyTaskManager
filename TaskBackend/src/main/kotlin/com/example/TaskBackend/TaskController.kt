@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus
 
 @RestController
 @RequestMapping("/tasks")
+@CrossOrigin(origins = ["http://localhost:5173"])
 class TaskController(private val repository: TaskRepository) {
 
     // 1. Get All Tasks (One-line function!)

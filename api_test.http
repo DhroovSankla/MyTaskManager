@@ -1,0 +1,28 @@
+### 1. GET ALL TASKS (Should be empty list [] initially)
+GET http://localhost:8080/tasks
+
+### 2. CREATE A NEW TASK (Send an order to the kitchen)
+POST http://localhost:8080/tasks
+Content-Type: application/json
+
+{
+  "title": "Study for Exam",
+  "description": "Complete Unit 1 and Unit 2 revision",
+  "isCompleted": false
+}
+
+### 3. GET ALL TASKS AGAIN (Should show the task you just created)
+GET http://localhost:8080/tasks
+
+### 4. UPDATE THE TASK (Mark as completed)
+PUT http://localhost:8080/tasks/1
+Content-Type: application/json
+
+{
+  "title": "Study for Exam",
+  "description": "Unit 1 and 2 DONE",
+  "isCompleted": true
+}
+
+### 5. DELETE THE TASK
+DELETE http://localhost:8080/tasks/1
