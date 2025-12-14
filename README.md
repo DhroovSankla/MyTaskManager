@@ -1,36 +1,54 @@
-# 🚀 Enterprise Task Manager
+# 📝 Full Stack Task Manager
 
-A Full Stack Task Management application built to demonstrate **CRUD operations**, **REST API architecture**, and **State Management**.
+A robust, full-stack implementation of a Task Management application built to demonstrate **CRUD operations** using a modern **Kotlin/Spring Boot** backend and a reactive **React** frontend.
 
-## 🛠️ Tech Stack
-* **Backend:** Java 17, Spring Boot 3, Spring Data JPA
-* **Frontend:** React.js (Vite), JavaScript (ES6)
-* **Database:** MySQL (Relational DB)
-* **Tools:** Postman (API Testing), Git/GitHub
+![Project Status](https://img.shields.io/badge/Status-Completed-success)
+![Tech Stack](https://img.shields.io/badge/Stack-Full%20Stack-blue)
+
+## 🚀 Tech Stack
+
+**Backend:**
+* **Language:** Kotlin 1.9
+* **Framework:** Spring Boot 3.3
+* **Database:** MySQL 8.0
+* **ORM:** Hibernate / Spring Data JPA
+* **Build Tool:** Gradle
+
+**Frontend:**
+* **Library:** React.js (Vite)
+* **Styling:** Modern CSS3 with CSS Variables
+* **HTTP Client:** Axios
 
 ## ✨ Features
-* **Create Tasks:** Add new tasks via the React UI, saved instantly to MySQL.
-* **Read Tasks:** Fetches data from the backend API on load.
-* **Update Status:** Click tasks to toggle between "Pending" ⬜ and "Done" ✅.
-* **Delete Tasks:** Remove completed tasks permanently from the database.
-* **Persistent Data:** Data survives page refreshes and server restarts.
 
-## 🏗️ Architecture
-**Client (React)** ↔️ **HTTP JSON** ↔️ **Server (Spring Boot)** ↔️ **JPA/Hibernate** ↔️ **Database (MySQL)**
+* ✅ **Create Tasks:** Add new items to your persistent Todo list.
+* ✅ **Read Tasks:** Fetch live data from the MySQL database on load.
+* ✅ **Update Status:** Toggle tasks between "Pending" and "Completed" (Updates DB instantly).
+* ✅ **Delete Tasks:** Remove items permanently from the database.
+* ✅ **Cross-Origin Resource Sharing (CORS):** Fully configured to allow secure Frontend-Backend communication.
 
-## 🚀 How to Run Locally
+## 🛠️ Setup & Installation
 
-### 1. Backend Setup
-1.  Clone the repo.
-2.  Open `TaskBackend` in IntelliJ IDEA.
-3.  Configure MySQL settings in `src/main/resources/application.properties`.
-4.  Run `TaskBackendApplication.java`.
+### Prerequisites
+* Java JDK 17+
+* Node.js & npm
+* MySQL Server
 
-### 2. Frontend Setup
-1.  Open `client` folder in VS Code.
-2.  Run `npm install` to get dependencies.
-3.  Run `npm run dev` to start the server.
-4.  Open `http://localhost:5173`.
+### 1. Database Setup
+Create a MySQL database named `task_db` (or update `application.properties` with your credentials).
+The application is configured to automatically generate the `my_todo_list` table on the first run.
 
----
-*Built as part of the Full Stack Java Developer Path.*
+### 2. Backend (Spring Boot)
+```bash
+cd TaskBackend
+./gradlew bootRun
+
+The server will start on http://localhost:8080
+
+3. Frontend (React)
+
+cd client
+npm install
+npm run dev
+
+The UI will launch on http://localhost:5173
