@@ -51,3 +51,4 @@ cd client
 npm install
 npm run dev
 ```
+The UI will launch on http://localhost:5173
