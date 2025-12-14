@@ -1,5 +1,5 @@
 package com.example.TaskBackend
-
+import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.bind.annotation.*
 import org.springframework.http.ResponseEntity
 import org.springframework.http.HttpStatus
@@ -24,19 +24,17 @@ class TaskController(private val repository: TaskRepository) {
             .map { task -> ResponseEntity.ok(task) }
             .orElse(ResponseEntity.notFound().build())
     }
-
     @PutMapping("/{id}")
-    fun updateTask(@PathVariable id: Long, @RequestBody updatedTask: Task): ResponseEntity<Task> {
-        return repository.findById(id).map { existingTask ->
-            // Manual updates instead of .copy()
-            existingTask.title = updatedTask.title
-            existingTask.description = updatedTask.description
-            existingTask.isCompleted = updatedTask.isCompleted
+    fun updateTask(@PathVariable id: Long, @RequestBody updatedTask: Task): Task {
+        println("FORCE UPDATING ID: $id TO STATUS: ${updatedTask.completed}")
 
-            ResponseEntity.ok(repository.save(existingTask))
-        }.orElse(ResponseEntity.notFound().build())
+        // 1. Run the Direct SQL Update (The Hammer)
+        repository.markTaskAsComplete(id, updatedTask.completed)
+
+        // 2. Since we bypassed the standard save, we manually return the updated object
+        // so React can update the screen immediately.
+        return updatedTask
     }
-
     // 5. Delete Task
     @DeleteMapping("/{id}")
     fun deleteTask(@PathVariable id: Long): ResponseEntity<Void> {
