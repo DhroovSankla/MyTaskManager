@@ -42,13 +42,12 @@ The application is configured to automatically generate the `my_todo_list` table
 ```bash
 cd TaskBackend
 ./gradlew bootRun
-
+```
 The server will start on http://localhost:8080
 
-3. Frontend (React)
-
+### 3. Frontend (React)
+```bash
 cd client
 npm install
 npm run dev
-
-The UI will launch on http://localhost:5173
+```
